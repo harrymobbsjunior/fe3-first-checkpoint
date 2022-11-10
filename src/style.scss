@@ -81,7 +81,7 @@ section.cards {
 }
 
 .card-container {
-    border: 1px solid #FFF;
+    border: 0px solid #FFF;
     border-radius: 5px;
     width: 300px;
     float: left;
@@ -89,15 +89,11 @@ section.cards {
     padding: 10px;
 
     h3 {
-        color: #FFF;
-        white {
-            color: #FFF;
-        }
-        .black {
-            color: #000;
-        }
+        color: #000;
+        text-shadow: 1px 1px 0px #adadad;
     }
     span {
-        color: #FFF;
+        color: #000;
+        text-shadow: 1px 1px 0px #adadad;
     }
 }

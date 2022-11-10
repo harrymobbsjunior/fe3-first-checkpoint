@@ -18,13 +18,15 @@ function App() {
     event.preventDefault()
 
     const coloracao = {
-      nomeCor: nomeCor,
-      corHexadecimal: corHexadecimal
+      nomeCor: nomeCor.trim(),
+      corHexadecimal: corHexadecimal.trim()
     }
 
-    if (nomeCor === '' || corHexadecimal === '') {
+    if (nomeCor.trim() === '' || corHexadecimal.trim() === '') {
 
-      console.log('Favor preencher os campos ');      
+      console.log( {nomeCor} );
+      console.log( {corHexadecimal} );
+      console.log('Favor preencher os campos');      
       setFormularioErro(true)
 
   } else {
@@ -54,7 +56,7 @@ function App() {
 
         <Form.Group className="groupForm">
           <Form.Label>Cor Hexadecimal: </Form.Label>
-          <Form.Control type="color" value={corHexadecimal} onChange={event => setCorHexadecimal(event.target.value)} placeholder="Cor Hexadecimal" />
+          <Form.Control type="color" value={corHexadecimal} onChange={event => setCorHexadecimal(event.target.value.trim())} placeholder="Cor Hexadecimal" />
 
         </Form.Group>
 

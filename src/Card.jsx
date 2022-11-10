@@ -3,10 +3,9 @@
 export function Card (props) {
 
   return (
-    <div className="card-container" >
+    <div className="card-container" style={{backgroundColor: props.corData.corHexadecimal}} >
             <div className="card-body">
-                <h3 className="clean">Cor: {props.corData.nomeCor}</h3>
-                <h3 className="dark">Cor: {props.corData.nomeCor}</h3>
+                <h3>Cor: {props.corData.nomeCor}</h3>
                 <span>Hexadecimal: {props.corData.corHexadecimal}</span>
             </div>
       </div>
