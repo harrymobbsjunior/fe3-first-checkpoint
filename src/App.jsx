@@ -2,51 +2,58 @@
 // Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
 import { useState } from 'react'
 import { Card } from './Card'
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import './style.scss'
 
 function App() {
   // Aqui você irá criar os Estados para manipular os Inputs
   const [nomeCor, setNomeCor] = useState();
   const [corHexadecimal, setCorHexadecimal] = useState();
+  const [allCores, setAllCores] = useState([]);
 
   function adicionarCor(event) {
     event.preventDefault()
+
     const coloracao = {
       nomeCor: nomeCor,
-      hexadecimal: corHexadecimal
+      corHexadecimal: corHexadecimal
     }
-	
-	setAllCores([...allCores])
 
-    //console.log(coloracao)
+    setAllCores([...allCores, coloracao])
   }
 
   return (
     <div className="App">
-     <h1>SISTEMA DE CORES</h1>
-     <form className="formCadastro"  onSubmit={event => adicionarCor(event)}>
-		<h2>CADASTRO DE COR</h2>
+      <h1>CADASTRO DE CORES</h1>
+      <form className="formCadastro" onSubmit={event => adicionarCor(event)}>
+        <h2>ADICIONAR NOVA COR</h2>
 
-		<input type="text" className="form-control" value={nomeCor} onChange={event => setNomeCor(event.target.value)} placeholder="Entre com o nome da Cor"/>
+        <Form.Group className="groupForm">
+          <Form.Label>Nome da Cor: </Form.Label>
+          <Form.Control type="text" value={nomeCor} onChange={event => setNomeCor(event.target.value)} placeholder="nome da Cor" />
+        </Form.Group>
 
-		<input type="color" className="form-control" value={corHexadecimal} onChange={event => setCorHexadecimal(event.target.value)} placeholder="Escolha a cor"/>
+        <Form.Group className="groupForm">
+          <Form.Label>Cor Hexadecimal: </Form.Label>
+          <Form.Control type="color" value={corHexadecimal} onChange={event => setCorHexadecimal(event.target.value)} placeholder="Cor Hexadecimal" />
 
-		<button type="submit" className="btn btn-primary">Adicionar</button>
-	</form>
+        </Form.Group>
 
-	<section className="CardColor">
-		{
-			allColors.map (
-				color => {
+        <Button type="submit" variant="primary" >Adicionar</Button>
+      </form>
 
-				}
-			)
-		}
-	</section>
-     {/* <Card /> */}
+      <section className="cards">
+        {
+          allCores.map((cor, i) => {
+            return (
+              <Card key={i} corData={cor} />
+            )
+          })
+        }
+      </section>
     </div>
-
   )
 }
 
