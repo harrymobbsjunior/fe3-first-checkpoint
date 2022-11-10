@@ -68,6 +68,14 @@ body {
 
 }
 
+.no-hidden {
+    display: inline;
+    color: red;
+}
+.hidden {
+    display: none;
+}
+
 section.cards {
     padding: 10px;
 }

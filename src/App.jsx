@@ -11,6 +11,7 @@ function App() {
   // Aqui você irá criar os Estados para manipular os Inputs
   const [nomeCor, setNomeCor] = useState();
   const [corHexadecimal, setCorHexadecimal] = useState();
+  const [formularioErro, setFormularioErro] = useState(false)
   const [allCores, setAllCores] = useState([]);
 
   function adicionarCor(event) {
@@ -21,7 +22,23 @@ function App() {
       corHexadecimal: corHexadecimal
     }
 
-    setAllCores([...allCores, coloracao])
+    if (nomeCor === '' || corHexadecimal === '') {
+
+      console.log('Favor preencher os campos ');      
+      setFormularioErro(true)
+
+  } else {
+
+      setFormularioErro(false)
+
+      setAllCores([...allCores, coloracao])
+
+      setNomeCor('')
+      setCorHexadecimal('')
+
+  }
+
+    
   }
 
   return (
@@ -42,6 +59,10 @@ function App() {
         </Form.Group>
 
         <Button type="submit" variant="primary" >Adicionar</Button>
+
+        <div className={formularioErro ? 'no-hidden' : 'hidden'}>
+          <p>Por favor, verifique os dados inseridos no formulário.</p>
+        </div>
       </form>
 
       <section className="cards">
